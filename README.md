@@ -66,3 +66,19 @@ node-redis-scripto
 
     });
 ~~~
+
+* Unfortunately you cannot use `require()` or `dofile()` to include Lua snippets from other files. However, you can do
+  something like this in your lua files:
+
+`helper/helper.lua`
+~~~lua
+def some_function()
+end
+~~~
+
+`myscript.lua`
+~~~lua
+scripto_include("helper/helper.lua")
+some_function()
+~~~
+
